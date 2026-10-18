@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff0f5">
+  <title>Happy Birthday! ♡</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="floating-decor decor-one" aria-hidden="true">♡</div>
+  <div class="floating-decor decor-two" aria-hidden="true">✿</div>
+  <div class="floating-decor decor-three" aria-hidden="true">♡</div>
+
+  <main class="page">
+    <section class="hero card" aria-labelledby="main-title">
+      <p class="eyebrow"><span>✦</span> A LITTLE BIRTHDAY SURPRISE <span>✦</span></p>
+      <div class="cake" aria-hidden="true">
+        <span class="candle">🕯️</span>
+        <span class="cake-emoji">🎂</span>
+        <span class="sparkle sparkle-left">✧</span>
+        <span class="sparkle sparkle-right">✧</span>
+      </div>
+      <p class="tiny-label">today is all about you</p>
+      <h1 id="main-title">Happy Birthday,<br><span class="name">Bestie!</span></h1>
+      <p class="intro">Semoga hari ini dipenuhi hal-hal kecil yang bikin kamu bahagia. Kamu pantas mendapatkan banyak senyum hari ini. ♡</p>
+      <div class="button-row">
+        <button class="button button-primary" id="open-letter" type="button">Buka surat rahasia 💌</button>
+        <button class="button button-secondary" id="surprise-button" type="button">Klik kejutan! 🎉</button>
+      </div>
+      <p class="hint">psst... ada dua tombol. Dua-duanya punya tujuan. 👀</p>
+    </section>
+
+    <section class="letter card" id="letter" aria-labelledby="letter-title" hidden>
+      <div class="letter-top"><span>FOR YOU, WITH LOVE</span><span aria-hidden="true">♡</span></div>
+      <h2 id="letter-title">A little note for you</h2>
+      <p>Hai, kamu! 💗</p>
+      <p>Selamat ulang tahun! Semoga di umur yang baru ini, kamu diberi kesehatan, ketenangan, dan banyak kesempatan baik. Semoga hal-hal yang sedang kamu usahakan satu per satu menemukan jalannya.</p>
+      <p>Terima kasih sudah menjadi bagian dari cerita dan hari-hari yang pernah kita bagi. Jangan lupa istirahat, makan yang cukup, dan kasih dirimu sendiri sedikit apresiasi. Kamu sudah sampai sejauh ini, lho.</p>
+      <p>Semoga tahun ini membawa lebih banyak alasan untuk tertawa, orang-orang yang tulus, dan kenangan yang ingin kamu simpan lama-lama.</p>
+      <p class="letter-signoff">Have the sweetest birthday!<br><strong>— from your friend ♡</strong></p>
+      <button class="text-button" id="close-letter" type="button">Lipat suratnya ↑</button>
+    </section>
+
+    <section class="wish card" aria-label="Ucapan ulang tahun">
+      <div class="wish-icon" aria-hidden="true">🌷</div>
+      <div>
+        <h2>Birthday wishes</h2>
+        <p>More happiness, less overthinking, and beautiful little surprises along the way.</p>
+      </div>
+      <span class="wish-heart" aria-hidden="true">♡</span>
+    </section>
+
+    <footer>made with ♡, just for your special day</footer>
+  </main>
+
+  <div class="toast" id="surprise-message" role="status" aria-live="polite" hidden>
+    <button class="toast-close" id="close-surprise" type="button" aria-label="Tutup kejutan">×</button>
+    <div class="toast-emoji" aria-hidden="true">🎊💗🎊</div>
+    <h2>Surpriseee!</h2>
+    <p>Semoga wish terbaikmu pelan-pelan jadi nyata. Jangan lupa bahagia hari ini, birthday star! ✨</p>
+    <span class="toast-bottom">YOU DESERVE GOOD THINGS ♡</span>
+  </div>
+  <div class="overlay" id="overlay" hidden></div>
+</body>
+</html>

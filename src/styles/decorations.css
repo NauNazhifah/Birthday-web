@@ -1,0 +1,278 @@
+/* ♡✿ BACKGROUND PAPER, WASHI TAPE, LACE,
+   STICKER SCATTER, CONFETTI & KEYFRAMES ✿♡ */
+
+/* ————— the blush paper world behind everything ————— */
+.paper-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.paper-bg__wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(58% 42% at 12% 8%, rgba(255, 214, 226, 0.9) 0%, rgba(255, 214, 226, 0) 70%),
+    radial-gradient(50% 40% at 88% 12%, rgba(247, 179, 199, 0.55) 0%, rgba(247, 179, 199, 0) 70%),
+    radial-gradient(55% 45% at 82% 88%, rgba(255, 224, 233, 0.85) 0%, rgba(255, 224, 233, 0) 72%),
+    radial-gradient(60% 42% at 10% 92%, rgba(247, 201, 213, 0.5) 0%, rgba(247, 201, 213, 0) 70%),
+    linear-gradient(180deg, #FCE7EC 0%, #FAD2E0 48%, #FCE7EC 100%);
+}
+.paper-bg__dots {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(217, 140, 166, 0.14) 1.6px, transparent 1.7px),
+    radial-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1.1px);
+  background-size: 30px 30px, 54px 54px;
+  background-position: 4px 6px, 22px 30px;
+}
+/* strawberry-print scrap sheets tucked into the background corners */
+.paper-bg__straw {
+  position: absolute;
+  width: 46vmin;
+  height: 46vmin;
+  opacity: 0.16;
+  transform: rotate(-14deg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cpath d='M36 16c11 0 17 8 17 18 0 11-9 20-17 24-8-4-17-13-17-24 0-10 6-18 17-18z' fill='%23e95b7b'/%3E%3Ccircle cx='32' cy='34' r='1.4' fill='%23fff7ed'/%3E%3Ccircle cx='40' cy='37' r='1.4' fill='%23fff7ed'/%3E%3Ccircle cx='36' cy='43' r='1.4' fill='%23fff7ed'/%3E%3Cpath d='M36 15c-3-6-9-8-9-8s0 7 6 9z' fill='%238fae8b'/%3E%3C/svg%3E");
+  background-size: 58px 58px;
+}
+.paper-bg__straw--a { top: -8vmin; left: -10vmin; }
+.paper-bg__straw--b {
+  bottom: -10vmin;
+  right: -12vmin;
+  transform: rotate(22deg);
+  opacity: 0.13;
+}
+/* pink gingham scraps peeking from the edges */
+.paper-bg__gingham {
+  position: absolute;
+  width: 40vmin;
+  height: 30vmin;
+  opacity: 0.3;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(233, 91, 123, 0.35) 0 9px, transparent 9px 18px),
+    repeating-linear-gradient(90deg, rgba(233, 91, 123, 0.35) 0 9px, transparent 9px 18px);
+  filter: blur(0.4px);
+}
+.paper-bg__gingham--a {
+  top: 30vh;
+  right: -14vmin;
+  transform: rotate(24deg) skewY(-4deg);
+}
+.paper-bg__gingham--b {
+  bottom: 26vh;
+  left: -16vmin;
+  transform: rotate(-18deg);
+}
+/* faint paper grain */
+.paper-bg__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 760px) {
+  .paper-bg__gingham { display: none; }
+  .paper-bg__straw { opacity: 0.1; }
+}
+
+/* ————— washi tape ————— */
+.washi {
+  position: absolute;
+  width: 128px;
+  height: 32px;
+  opacity: 0.85;
+  box-shadow: 0 4px 10px -6px rgba(104, 70, 74, 0.35);
+  clip-path: polygon(0 0, 100% 2%, 98.5% 100%, 1.5% 96%);
+  z-index: 6;
+  pointer-events: none;
+}
+.washi--rose {
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.4) 0 9px, rgba(255, 255, 255, 0) 9px 18px),
+    linear-gradient(180deg, #EBAFC4, #E39DB6);
+}
+.washi--gingham {
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.55) 0 5px, rgba(255, 255, 255, 0) 5px 10px),
+    repeating-linear-gradient(90deg, rgba(233, 91, 123, 0.75) 0 5px, rgba(233, 91, 123, 0.35) 5px 10px),
+    #F9DEE6;
+}
+.washi--straw {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath d='M13 5c4 0 6 3 6 7 0 4-3 7-6 9-3-2-6-5-6-9 0-4 2-7 6-7z' fill='%23fff7ed'/%3E%3Ccircle cx='11' cy='11' r='.8' fill='%23e95b7b'/%3E%3Ccircle cx='15' cy='12' r='.8' fill='%23e95b7b'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #F7C9D5, #F2B3C8);
+  background-size: 20px 20px, auto;
+}
+
+/* ————— scalloped lace edges ————— */
+.lace-edge {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  height: 15px;
+  background-image: radial-gradient(circle at 8px -3px, #F9D6E0 0 9.5px, transparent 10px);
+  background-size: 16px 15px;
+  background-repeat: repeat-x;
+  pointer-events: none;
+  z-index: 2;
+}
+.lace-edge--top { top: 7px; }
+.lace-edge--bottom {
+  bottom: 7px;
+  background-image: radial-gradient(circle at 8px calc(100% + 3px), #F9D6E0 0 9.5px, transparent 10px);
+}
+
+/* ————— section headings like little journal titles ————— */
+.section-head {
+  position: relative;
+  text-align: center;
+  padding: 0 1rem;
+  z-index: 3;
+}
+.section-title {
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5.2vw, 3.1rem);
+  color: var(--rose-deep);
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.7);
+}
+.section-sub {
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+  color: var(--cocoa);
+  opacity: 0.75;
+  margin-top: 0.3rem;
+}
+.section-head-star { position: absolute; top: 4px; animation: twinkle 3.2s ease-in-out infinite alternate; }
+.section-head-star.is-left { left: 4%; }
+.section-head-star.is-right { right: 6%; animation-delay: 1.4s; }
+@keyframes twinkle {
+  from { transform: scale(0.75) rotate(-8deg); opacity: 0.55; }
+  to   { transform: scale(1.05) rotate(10deg); opacity: 1; }
+}
+
+/* ————— corner sticker scatter ————— */
+.corner-stickers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+.scatter-item {
+  position: absolute;
+  filter: drop-shadow(0 8px 10px rgba(217, 140, 166, 0.35));
+  opacity: 0.95;
+}
+
+/* decorative clusters shrink on small screens */
+@media (max-width: 1080px) {
+  .hide-tablet { display: none; }
+}
+@media (max-width: 700px) {
+  .hide-mobile { display: none; }
+}
+
+/* ————— ornament divider between sections ————— */
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 640px;
+  margin: 2.6rem auto 1rem;
+  padding: 0 1.2rem;
+}
+.divider-ornament__lace {
+  flex: 1;
+  height: 12px;
+  background-image: radial-gradient(circle at 7px 6px, rgba(217, 140, 166, 0.5) 0 5.5px, transparent 6px);
+  background-size: 14px 12px;
+  background-repeat: repeat-x;
+}
+.divider-ornament__center {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 1.05rem;
+  filter: drop-shadow(0 2px 2px rgba(217, 140, 166, 0.4));
+}
+
+/* ————— confetti ————— */
+#niza-confetti-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  overflow: hidden;
+  pointer-events: none;
+}
+.confetti-piece {
+  position: absolute;
+  line-height: 1;
+  transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  animation: confetti-fly var(--dur, 1200ms) ease-out forwards;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 1px 1px rgba(104, 70, 74, 0.18));
+}
+@keyframes confetti-fly {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); opacity: 1; }
+  65%  { opacity: 1; }
+  100% { transform: translate3d(var(--dx, 0px), var(--dy, 120px), 0) rotate(var(--rot, 180deg)) scale(0.55); opacity: 0; }
+}
+
+/* rising hearts/berries (cake wish, gift box) */
+.float-bit {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  animation: float-rise 2.7s ease-out forwards;
+  filter: drop-shadow(0 2px 3px rgba(217, 140, 166, 0.5));
+  z-index: 8;
+}
+@keyframes float-rise {
+  0%   { opacity: 0; transform: translateY(14px) rotate(0deg) scale(0.6); }
+  18%  { opacity: 1; transform: translateY(0) rotate(var(--rot, 10deg)) scale(1); }
+  100% { opacity: 0; transform: translateY(calc(var(--rise, 140px) * -1)) rotate(var(--rot, 10deg)) scale(0.92); }
+}
+
+/* ————— speech-bubble notes revealed by stickers ————— */
+.sticker-note {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  width: 208px;
+  transform: translateX(-50%) rotate(-2deg);
+  background: var(--cream);
+  border: 2px dashed var(--rose);
+  border-radius: 12px;
+  padding: 11px 12px 12px;
+  font-family: var(--font-hand);
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: #8a5459;
+  text-align: center;
+  box-shadow: var(--shadow-note);
+  z-index: 40;
+  animation: note-pop 0.4s var(--ease-bounce);
+}
+.sticker-note-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 56px;
+  height: 18px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: var(--pink-milk);
+  opacity: 0.9;
+  clip-path: polygon(2% 0, 98% 4%, 100% 96%, 0 100%);
+}
+@keyframes note-pop {
+  0%   { transform: translateX(-50%) rotate(-6deg) scale(0.4); opacity: 0; }
+  100% { transform: translateX(-50%) rotate(-2deg) scale(1); opacity: 1; }
+}
+
+@media (max-width: 700px) {
+  .sticker-note { width: 178px; font-size: 0.9rem; }
+}

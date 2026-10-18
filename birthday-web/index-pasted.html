@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Niza's Birthday Wonderland — sebuah kado digital interaktif untuk ulang tahun Niza." />
+  <title>Niza's Birthday Wonderland</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+</head>
+<body>
+
+  <!-- ============================== NAV ============================== -->
+  <nav class="nav" aria-label="Navigasi utama">
+    <div class="nav-inner">
+      <span class="nav-brand" aria-hidden="true">Niza's Wonderland</span>
+      <div class="nav-links" id="navLinks" role="tablist">
+        <button class="nav-pill" data-section="welcome"  role="tab" aria-selected="true">Welcome</button>
+        <button class="nav-pill" data-section="cake"     role="tab" aria-selected="false">Cake</button>
+        <button class="nav-pill" data-section="wishes"   role="tab" aria-selected="false">Wishes</button>
+        <button class="nav-pill" data-section="letter"   role="tab" aria-selected="false">Letter</button>
+        <button class="nav-pill" data-section="gift"     role="tab" aria-selected="false">Gift</button>
+        <button class="nav-pill" data-section="final"    role="tab" aria-selected="false">Final</button>
+      </div>
+      <button class="sound-toggle" id="soundToggle" aria-label="Aktifkan atau matikan suara" aria-pressed="false">
+        <span class="sound-icon" aria-hidden="true">
+          <span class="sound-off">🔇</span>
+          <span class="sound-on">🔊</span>
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================== PROGRESS BAR ============================== -->
+  <div class="progress-bar" aria-hidden="true">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <!-- ============================== CONFETTI LAYER ============================== -->
+  <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <!-- ============================== DECORATIONS ============================== -->
+  <div class="bg-decorations" aria-hidden="true">
+    <span class="bg-heart" style="--x:5%;--y:15%;--d:0s;--s:1.2">&#10084;</span>
+    <span class="bg-heart" style="--x:90%;--y:10%;--d:1.5s;--s:0.9">&#10084;</span>
+    <span class="bg-heart" style="--x:15%;--y:70%;--d:3s;--s:1">&#10084;</span>
+    <span class="bg-heart" style="--x:85%;--y:60%;--d:2s;--s:1.3">&#10084;</span>
+    <span class="bg-heart" style="--x:50%;--y:5%;--d:4s;--s:0.8">&#10084;</span>
+    <span class="bg-heart" style="--x:75%;--y:85%;--d:0.5s;--s:1.1">&#10084;</span>
+    <span class="bg-blossom" style="--x:10%;--y:40%;--d:1s;--s:1">&#127800;</span>
+    <span class="bg-blossom" style="--x:92%;--y:35%;--d:2.5s;--s:0.9">&#127800;</span>
+    <span class="bg-blossom" style="--x:30%;--y:90%;--d:3.5s;--s:1.1">&#127800;</span>
+    <span class="bg-sparkle" style="--x:20%;--y:25%;--d:0.8s;--s:1">&#10024;</span>
+    <span class="bg-sparkle" style="--x:80%;--y:75%;--d:2.2s;--s:1.2">&#10024;</span>
+    <span class="bg-sparkle" style="--x:60%;--y:20%;--d:3.8s;--s:0.9">&#10024;</span>
+  </div>
+
+  <main id="main">
+
+    <!-- ====================== 1. WELCOME ====================== -->
+    <section class="section active" id="welcome" role="tabpanel" aria-labelledby="welcome-heading">
+      <div class="welcome-wrap">
+        <div class="ribbon-banner" aria-hidden="true">
+          <span class="ribbon-tail ribbon-tail-left"></span>
+          <span class="ribbon-body">A Special Day</span>
+          <span class="ribbon-tail ribbon-tail-right"></span>
+        </div>
+
+        <h1 class="welcome-heading" id="welcome-heading">
+          <span class="welcome-line-1">Happy Birthday</span>
+          <span class="welcome-name">Niza</span>
+        </h1>
+
+        <p class="welcome-greeting">
+          Hai Niza! Hari istimewa ini milikmu &mdash; teman yang selalu ceria dan hangat.
+          Aku punya sedikit kejutan digital untukmu. Tekan tombol di bawah yuk, dan mari kita mulai petualangan kecil ini bersama-sama!
+        </p>
+
+        <button class="btn btn-primary" id="startBtn" type="button">
+          <span>Mulai Petualangan</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </button>
+
+        <div class="floating-hearts" aria-hidden="true">
+          <span class="fh" style="--d:0s;--x:10px">&#10084;</span>
+          <span class="fh" style="--d:0.8s;--x:60px">&#10084;</span>
+          <span class="fh" style="--d:1.6s;--x:-20px">&#10084;</span>
+          <span class="fh" style="--d:2.4s;--x:90px">&#10084;</span>
+          <span class="fh" style="--d:3.2s;--x:30px">&#10084;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== 2. CAKE ====================== -->
+    <section class="section" id="cake" role="tabpanel" aria-labelledby="cake-heading" hidden>
+      <div class="section-header">
+        <span class="section-eyebrow">Step 01</span>
+        <h2 class="section-heading" id="cake-heading">Tiup Lilinnya!</h2>
+        <p class="section-sub">Tekan setiap lilin untuk meniupnya. Tiup kelima lilin dan buat permohonanmu terdengar &mdash; barulah pintu berikutnya terbuka.</p>
+      </div>
+
+      <!-- CSS Cake -->
+      <div class="cake-stage" role="group" aria-label="Kue ulang tahun dengan lima lilin">
+        <div class="cake-glow" aria-hidden="true"></div>
+
+        <!-- Candles -->
+        <div class="candles-row" id="candlesRow">
+          <button class="candle" data-candle="0" type="button" aria-label="Lilin 1, tekan untuk meniup" aria-pressed="false">
+            <span class="flame" aria-hidden="true"></span>
+            <span class="wick" aria-hidden="true"></span>
+            <span class="stick" aria-hidden="true"></span>
+          </button>
+          <button class="candle" data-candle="1" type="button" aria-label="Lilin 2, tekan untuk meniup" aria-pressed="false">
+            <span class="flame" aria-hidden="true"></span>
+            <span class="wick" aria-hidden="true"></span>
+            <span class="stick" aria-hidden="true"></span>
+          </button>
+          <button class="candle" data-candle="2" type="button" aria-label="Lilin 3, tekan untuk meniup" aria-pressed="false">
+            <span class="flame" aria-hidden="true"></span>
+            <span class="wick" aria-hidden="true"></span>
+            <span class="stick" aria-hidden="true"></span>
+          </button>
+          <button class="candle" data-candle="3" type="button" aria-label="Lilin 4, tekan untuk meniup" aria-pressed="false">
+            <span class="flame" aria-hidden="true"></span>
+            <span class="wick" aria-hidden="true"></span>
+            <span class="stick" aria-hidden="true"></span>
+          </button>
+          <button class="candle" data-candle="4" type="button" aria-label="Lilin 5, tekan untuk meniup" aria-pressed="false">
+            <span class="flame" aria-hidden="true"></span>
+            <span class="wick" aria-hidden="true"></span>
+            <span class="stick" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <!-- Cake body -->
+        <div class="cake" aria-hidden="true">
+          <div class="cake-layer cake-top"></div>
+          <div class="cake-drip drip-1"></div>
+          <div class="cake-drip drip-2"></div>
+          <div class="cake-drip drip-3"></div>
+          <div class="cake-drip drip-4"></div>
+          <div class="cake-layer cake-bottom"></div>
+          <div class="cake-plate"></div>
+        </div>
+      </div>
+
+      <p class="cake-progress" id="cakeProgress" aria-live="polite">0 dari 5 lilin ditiup</p>
+
+      <div class="cake-actions">
+        <button class="btn btn-secondary" id="relightBtn" type="button">Nyalakan Ulang</button>
+        <button class="btn btn-primary btn-locked" id="nextFromCake" type="button" disabled>
+          <span>Lanjut ke Wishes</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ====================== 3. WISHES GARDEN ====================== -->
+    <section class="section" id="wishes" role="tabpanel" aria-labelledby="wishes-heading" hidden>
+      <div class="section-header">
+        <span class="section-eyebrow">Step 02</span>
+        <h2 class="section-heading" id="wishes-heading">Taman Harapan</h2>
+        <p class="section-sub">Pilih satu atau beberapa harapan untukmu, Niza. Setiap bunga mewakili doa yang tulus dari hati.</p>
+      </div>
+
+      <div class="wishes-grid" id="wishesGrid" role="group" aria-label="Pilihan harapan">
+        <button class="wish-card" data-wish="peace" type="button" aria-pressed="false">
+          <span class="wish-flower" aria-hidden="true">&#127804;</span>
+          <h3 class="wish-title">Kedamaian</h3>
+          <p class="wish-desc">Semoga hatimu selalu tenang, jauh dari gelisah, dan penuh ketenteraman di setiap musim.</p>
+          <span class="wish-check" aria-hidden="true">&#10003;</span>
+        </button>
+        <button class="wish-card" data-wish="happiness" type="button" aria-pressed="false">
+          <span class="wish-flower" aria-hidden="true">&#127800;</span>
+          <h3 class="wish-title">Kebahagiaan</h3>
+          <p class="wish-desc">Semoga tawa menghiasi harimu, dan kebahagiaan kecil datang dari hal-hal sederhana.</p>
+          <span class="wish-check" aria-hidden="true">&#10003;</span>
+        </button>
+        <button class="wish-card" data-wish="dreams" type="button" aria-pressed="false">
+          <span class="wish-flower" aria-hidden="true">&#127803;</span>
+          <h3 class="wish-title">Impian</h3>
+          <p class="wish-desc">Semoga setiap impian yang kau rajut perlahan menjadi nyata, satu per satu, dengan indah.</p>
+          <span class="wish-check" aria-hidden="true">&#10003;</span>
+        </button>
+        <button class="wish-card" data-wish="friendship" type="button" aria-pressed="false">
+          <span class="wish-flower" aria-hidden="true">&#127801;</span>
+          <h3 class="wish-title">Persahabatan</h3>
+          <p class="wish-desc">Semoga kita selalu menjadi teman yang tulus &mdash; di tawa, di air mata, dan di setiap musim.</p>
+          <span class="wish-check" aria-hidden="true">&#10003;</span>
+        </button>
+        <button class="wish-card" data-wish="health" type="button" aria-pressed="false">
+          <span class="wish-flower" aria-hidden="true">&#127807;</span>
+          <h3 class="wish-title">Kesehatan</h3>
+          <p class="wish-desc">Semoga tubuhmu sehat, semangatmu menyala, dan harimu selalu penuh energi positif.</p>
+          <span class="wish-check" aria-hidden="true">&#10003;</span>
+        </button>
+        <button class="wish-card" data-wish="surprises" type="button" aria-pressed="false">
+          <span class="wish-flower" aria-hidden="true">&#127802;</span>
+          <h3 class="wish-title">Kejutan</h3>
+          <p class="wish-desc">Semoga hidup penuh kejutan manis yang tak terduga &mdash; yang membuatmu tersenyum lebar.</p>
+          <span class="wish-check" aria-hidden="true">&#10003;</span>
+        </button>
+      </div>
+
+      <div class="wishes-summary" id="wishesSummary" aria-live="polite">
+        <p>Belum ada harapan yang dipilih &mdash; pilih minimal satu yuk!</p>
+      </div>
+
+      <button class="btn btn-primary" id="nextFromWishes" type="button">
+        <span>Lanjut ke Letter</span>
+        <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+      </button>
+    </section>
+
+    <!-- ====================== 4. SECRET LETTER ====================== -->
+    <section class="section" id="letter" role="tabpanel" aria-labelledby="letter-heading" hidden>
+      <div class="section-header">
+        <span class="section-eyebrow">Step 03</span>
+        <h2 class="section-heading" id="letter-heading">Surat Rahasia</h2>
+        <p class="section-sub">Buka amplopnya, Niza. Ada sepucuk surat kecil yang ditulis tulus untukmu di dalamnya.</p>
+      </div>
+
+      <div class="envelope-stage" id="envelopeStage">
+        <div class="envelope" id="envelope">
+          <div class="envelope-back"></div>
+
+          <div class="letter-paper" id="letterPaper">
+            <div class="letter-content" id="letterContent">
+              <h3 class="letter-dear">Untuk Niza tersayang,</h3>
+              <p class="letter-para">
+                Selamat ulang tahun, Niza! Ada hal yang ingin aku bilang: terima kasih sudah menjadi teman yang hangat dan selalu bisa diandalkan.
+                Kau punya cara untuk membuat orang di sekitarmu merasa nyaman &mdash; itu hadiah langka yang tak semua orang punya.
+              </p>
+              <p class="letter-para">
+                Di hari spesial ini, aku berdoa semoga setahun ke depan membawakan lebih banyak tawa, lebih banyak momen indah,
+                dan lebih banyak alasan untuk bersyukur. Semoga impianmu perlahan menjadi kenyataan, satu per satu.
+              </p>
+              <p class="letter-para">
+                Dan jangan lupa: kalau capek, istirahat. Kalau sedih, cerita. Aku selalu di sini &mdash; bukan karena hari ini ulang tahunmu,
+                tapi karena kau sahabat yang berharga setiap hari.
+              </p>
+              <p class="letter-sign">Salam hangat &amp; peluk erat,<br />&mdash; Temanmu</p>
+            </div>
+          </div>
+
+          <div class="envelope-front"></div>
+          <div class="envelope-flap" id="envelopeFlap"></div>
+          <button class="envelope-seal" id="envelopeSeal" type="button" aria-label="Buka amplop">
+            <span aria-hidden="true">&#10084;</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="letter-actions">
+        <button class="btn btn-primary" id="openLetterBtn" type="button">Buka Surat</button>
+        <button class="btn btn-secondary" id="closeLetterBtn" type="button" hidden>Lipat Surat</button>
+        <button class="btn btn-primary" id="nextFromLetter" type="button">
+          <span>Lanjut ke Gift</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ====================== 5. MYSTERY GIFT ====================== -->
+    <section class="section" id="gift" role="tabpanel" aria-labelledby="gift-heading" hidden>
+      <div class="section-header">
+        <span class="section-eyebrow">Step 04</span>
+        <h2 class="section-heading" id="gift-heading">Kado Misteri</h2>
+        <p class="section-sub">Ada satu kado kecil menunggu untuk dibuka. Tekan kotaknya dan lihat apa di dalamnya!</p>
+      </div>
+
+      <div class="gift-stage">
+        <div class="gift-glow" aria-hidden="true"></div>
+
+        <button class="gift-box" id="giftBox" type="button" aria-label="Buka kado misteri">
+          <span class="gift-lid" aria-hidden="true"></span>
+          <span class="gift-box-body" aria-hidden="true"></span>
+          <span class="gift-ribbon-v" aria-hidden="true"></span>
+          <span class="gift-ribbon-h" aria-hidden="true"></span>
+          <span class="gift-bow" aria-hidden="true">
+            <span class="bow-loop bow-left"></span>
+            <span class="bow-loop bow-right"></span>
+            <span class="bow-knot"></span>
+          </span>
+        </button>
+
+        <div class="gift-reveal" id="giftReveal" hidden>
+          <div class="reveal-sparkle" aria-hidden="true">&#10024;</div>
+          <h3 class="reveal-title">Yay! Kado Terbuka!</h3>
+          <p class="reveal-text">
+            Hadiah terbaik bukan benda, Niza &mdash; tapi momen ini. Seseorang merasa beruntung punya teman sepertimu,
+            dan hari ini, seluruh dunia kecil ini dibuat hanya untuk merayakanmu.
+          </p>
+          <div class="reveal-emoji" aria-hidden="true">
+            <span>&#127881;</span><span>&#127880;</span><span>&#127881;</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" id="nextFromGift" type="button">
+        <span>Lanjut ke Final</span>
+        <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+      </button>
+    </section>
+
+    <!-- ====================== 6. FINAL PAGE ====================== -->
+    <section class="section" id="final" role="tabpanel" aria-labelledby="final-heading" hidden>
+      <div class="section-header">
+        <span class="section-eyebrow">Step 05</span>
+        <h2 class="section-heading" id="final-heading">Goodnight, Sweet Friend</h2>
+        <p class="section-sub">Satu halaman terakhir sebelum petualangan ini berakhir.</p>
+      </div>
+
+      <!-- Moon and stars CSS illustration -->
+      <div class="moon-scene" aria-hidden="true">
+        <div class="moon">
+          <span class="moon-crater c1"></span>
+          <span class="moon-crater c2"></span>
+          <span class="moon-crater c3"></span>
+        </div>
+        <span class="star s1">&#10022;</span>
+        <span class="star s2">&#10022;</span>
+        <span class="star s3">&#10022;</span>
+        <span class="star s4">&#10022;</span>
+        <span class="star s5">&#10022;</span>
+        <span class="star s6">&#10022;</span>
+        <span class="star s7">&#10022;</span>
+        <span class="star s8">&#10022;</span>
+      </div>
+
+      <div class="final-message">
+        <p class="final-text">
+          Niza, terima kasih sudah menjadi teman yang hangat, tulus, dan selalu menyenangkan.
+          Semoga bintang-bintang malam ini membawa doa terbaik untukmu &mdash; dan semoga tahun ini jadi tahun yang paling indah dalam perjalananmu.
+        </p>
+        <p class="final-quote">"True friends are like stars &mdash; you don't always see them, but they're always there."</p>
+      </div>
+
+      <div class="final-actions">
+        <button class="btn btn-primary" id="celebrateBtn" type="button">
+          <span>Raikan Lagi!</span>
+          <span class="btn-icon" aria-hidden="true">&#127881;</span>
+        </button>
+        <button class="btn btn-secondary" id="restartBtn" type="button">Mulai dari Awal</button>
+      </div>
+
+      <p class="final-footer">Dibuat dengan &#10084; untuk Niza &middot; <span id="footerYear"></span></p>
+    </section>
+
+  </main>
+
+  <!-- ============================== RESET BUTTON (floating) ============================== -->
+  <button class="reset-fab" id="resetFab" type="button" aria-label="Reset semua progress" title="Reset progress">
+    <span aria-hidden="true">&#8635;</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
